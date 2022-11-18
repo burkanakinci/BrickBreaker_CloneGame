@@ -7,6 +7,8 @@ public class GameManager : CustomBehaviour
 {
     public static GameManager Instance { get; private set; }
     #region Fields
+    public PlayerManager PlayerManager;
+    public JsonConverter JsonConverter;
     public Spin Spin;
     #endregion
 
@@ -26,6 +28,8 @@ public class GameManager : CustomBehaviour
     }
     public override void Initialize()
     {
+        JsonConverter.Initialize();
+        PlayerManager.Initialize();
         Spin.Initialize();
     }
     private void Start()

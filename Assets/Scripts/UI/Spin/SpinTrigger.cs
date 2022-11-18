@@ -16,6 +16,7 @@ public class SpinTrigger : CustomBehaviour
         if (IsSpin)
         {
             m_SpinPieceOnSpin = other.GetComponent<SpinPiece>();
+            GameManager.Instance.Spin.GetRewardOnSpin(m_SpinPieceOnSpin.SpinRewardType, m_SpinPieceOnSpin.RewardValue);
             IsSpin = false;
         }
     }

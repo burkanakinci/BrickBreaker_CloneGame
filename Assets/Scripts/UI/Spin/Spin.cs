@@ -9,6 +9,7 @@ public class Spin : CustomBehaviour
     [SerializeField] private SpinTrigger m_SpinTrigger;
     [SerializeField] private RectTransform m_SpinRectTransform;
     [SerializeField] private List<SpinPiece> m_SpinPieces;
+    private SpinReward m_SpinReward;
     #endregion
 
     public override void Initialize()
@@ -19,6 +20,7 @@ public class Spin : CustomBehaviour
         m_SpinPieces.ForEach(x =>
             x.Initialize()
         );
+        m_SpinReward = new SpinReward();
     }
 
     private string m_SpinRotateTweenID;
@@ -52,5 +54,10 @@ public class Spin : CustomBehaviour
         }).
         SetId(m_SpinRotateTweenID).
         SetEase(Ease.OutExpo);
+    }
+
+    public void GetRewardOnSpin(SpinRewardType _rewardType, int _rewardValue)
+    {
+        m_SpinReward.GetRewardByType(_rewardType).GetReward(_rewardValue);
     }
 }
