@@ -56,6 +56,11 @@ public class Spin : CustomBehaviour
         SetEase(Ease.OutExpo);
     }
 
+    public void StartGame()
+    {
+        GameManager.Instance.GameStart();
+    }
+
     public void GetRewardOnSpin(SpinRewardType _rewardType, int _rewardValue)
     {
         m_SpinReward.GetRewardByType(_rewardType).GetReward(_rewardValue);

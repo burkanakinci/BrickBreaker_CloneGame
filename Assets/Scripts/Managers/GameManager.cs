@@ -9,6 +9,10 @@ public class GameManager : CustomBehaviour
     #region Fields
     public PlayerManager PlayerManager;
     public JsonConverter JsonConverter;
+    public LevelManager LevelManager;
+    public UIManager UIManager;
+    public InputManager InputManager;
+    public Breaker Breaker;
     public Spin Spin;
     #endregion
 
@@ -30,6 +34,11 @@ public class GameManager : CustomBehaviour
     {
         JsonConverter.Initialize();
         PlayerManager.Initialize();
+        InputManager.Initialize();
+        
+        UIManager.Initialize();
+        LevelManager.Initialize();
+        Breaker.Initialize();
         Spin.Initialize();
     }
     private void Start()

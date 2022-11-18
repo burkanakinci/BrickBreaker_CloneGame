@@ -1,62 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public class PlayerManager : CustomBehaviour
+public class Ball : CustomBehaviour
 {
     #region Fields
-    #endregion
-    #region ExternalAccess
-
+    [SerializeField] private Rigidbody2D m_BallRB;
+    [SerializeField] private float m_BallVelocityMultiplier;
     #endregion
     public override void Initialize()
     {
 
         GameManager.Instance.OnResetToMainMenu += OnResetToMainMenu;
+        GameManager.Instance.OnGameStart += OnGameStart;
         GameManager.Instance.OnLevelCompleted += OnLevelCompleted;
         GameManager.Instance.OnLevelFailed += OnLevelFailed;
+    }
 
-    }
-    public void UpdateTotalCoinCountData(int _coinCount)
+    private Vector3 m_TargetVelocity;
+    private void FixedUpdate()
     {
-        GameManager.Instance.JsonConverter.PlayerData.TotalCoinCount = _coinCount;
-        GameManager.Instance.JsonConverter.SavePlayerData();
+        m_BallRB.velocity = m_TargetVelocity * m_BallVelocityMultiplier;
     }
-    public int GetTotalCoinCount()
+
+    private Vector3 m_LookPos, m_LookAngle;
+    private Quaternion m_LookRotation;
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        return GameManager.Instance.JsonConverter.PlayerData.TotalCoinCount;
-    }
-    public void UpdateLevelData(int _levelNumber)
-    {
-        GameManager.Instance.JsonConverter.PlayerData.LevelNumber = _levelNumber;
-        GameManager.Instance.JsonConverter.SavePlayerData();
-    }
-    public int GetLevelNumber()
-    {
-        return GameManager.Instance.JsonConverter.PlayerData.LevelNumber;
+        m_TargetVelocity = (Vector3.Reflect(transform.position, other.contacts[0].normal));
     }
 
     #region Events
-
     private void OnResetToMainMenu()
     {
     }
 
+    private void OnGameStart()
+    {
+        m_TargetVelocity = Vector3.up * m_BallVelocityMultiplier;
+        transform.eulerAngles = Vector3.right * -90.0f;
+    }
     private void OnLevelCompleted()
     {
     }
-
     private void OnLevelFailed()
     {
     }
-
     private void OnDestroy()
     {
         GameManager.Instance.OnResetToMainMenu -= OnResetToMainMenu;
+        GameManager.Instance.OnGameStart -= OnGameStart;
         GameManager.Instance.OnLevelCompleted -= OnLevelCompleted;
         GameManager.Instance.OnLevelFailed -= OnLevelFailed;
     }
-
     #endregion
 }
