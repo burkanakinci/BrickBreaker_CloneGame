@@ -7,6 +7,7 @@ public class Ball : CustomBehaviour
     #region Fields
     [SerializeField] private Rigidbody2D m_BallRB;
     [SerializeField] private float m_BallVelocityMultiplier;
+    public SpriteRenderer BallSpriteRenderer;
     #endregion
     public override void Initialize()
     {
@@ -39,6 +40,8 @@ public class Ball : CustomBehaviour
     {
         m_TargetVelocity = Vector3.up * m_BallVelocityMultiplier;
         transform.eulerAngles = Vector3.right * -90.0f;
+
+        BallSpriteRenderer.color = Color.white;
     }
     private void OnLevelCompleted()
     {

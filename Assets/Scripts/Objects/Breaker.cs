@@ -32,14 +32,27 @@ public class Breaker : CustomBehaviour
         m_TargetPosition.x = Mathf.Clamp(m_TargetPosition.x, -1.75f, 1.75f);
         transform.position = m_TargetPosition;
     }
+    private void ResetBreaker()
+    {
+        m_Ball.gameObject.SetActive(false);
+        m_Ball.transform.position = m_BallStartPosition.position;
+        transform.position = Vector3.up * -4.5f;
+        m_BreakerVisual.SetActive(false);
+    }
+
+    public Color GetBallColor()
+    {
+        return m_Ball.BallSpriteRenderer.color;
+    }
+    public void SetBallColor(Color _color)
+    {
+        m_Ball.BallSpriteRenderer.color = _color;
+    }
 
     #region Events
     private void OnResetToMainMenu()
     {
-        m_Ball.gameObject.SetActive(false);
-        m_Ball.transform.position = m_BallStartPosition.position;
-        transform.position = Vector3.up * -4.0f;
-        m_BreakerVisual.SetActive(false);
+        ResetBreaker();
     }
 
     private void OnGameStart()
@@ -52,6 +65,7 @@ public class Breaker : CustomBehaviour
     }
     private void OnLevelFailed()
     {
+        ResetBreaker();
     }
     private void OnDestroy()
     {

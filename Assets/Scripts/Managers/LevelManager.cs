@@ -14,7 +14,8 @@ public class LevelManager : CustomBehaviour
     #endregion
 
     #region ExternalAccess
-
+    public int BrickCount => m_LevelData.BrickColor.Length;
+    public int BrickedCount;
     #endregion
 
     #region Actions
@@ -40,6 +41,11 @@ public class LevelManager : CustomBehaviour
     #region SpawnSceneObject
     private void SpawnSceneObjects()
     {
+        for (int _brickCount = m_LevelData.BrickColor.Length - 1; _brickCount >= 0; _brickCount--)
+        {
+            GameManager.Instance.ObjectPool.SpawnFromPool(PooledObjectTags.Brick, m_LevelData.BrickPositions[_brickCount]).
+                GetGameObject().GetComponent<Brick>().SetBrickColor(m_LevelData.BrickColor[_brickCount]);
+        }
     }
     #endregion
 
@@ -51,6 +57,7 @@ public class LevelManager : CustomBehaviour
 
     private void OnGameStart()
     {
+        BrickedCount=0;
         m_CurrentLevelNumber = GameManager.Instance.PlayerManager.GetLevelNumber();
 
         GetLevelData();

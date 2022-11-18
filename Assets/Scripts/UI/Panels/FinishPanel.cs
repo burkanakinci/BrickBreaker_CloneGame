@@ -45,7 +45,7 @@ public class FinishPanel : UIPanel
     }
     private IEnumerator ShowFinishPanelCoroutine()
     {
-        yield return new WaitUntil(() => (m_CanvasGroup.alpha == 1));
+        yield return new WaitForEndOfFrame();
         base.ShowPanel();
 
         StartRewardCoinTween();

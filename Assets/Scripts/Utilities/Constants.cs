@@ -6,6 +6,12 @@ public class Constants
 
 public class PooledObjectTags
 {
+    public const string Brick = "Brick";
+}
+public class ObjectTags
+{
+    public const string Ball = "Ball";
+    public const string Brick = "Brick";
 }
 public enum SpinRewardType
 {

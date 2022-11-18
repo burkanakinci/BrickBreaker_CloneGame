@@ -1561,8 +1561,8 @@ MonoBehaviour:
   m_Ball: {fileID: 2046191391}
   m_BallStartPosition: {fileID: 1942144037}
   m_HorizontalMovementMultiplier: 3
---- !u!61 &1064777109
-BoxCollider2D:
+--- !u!70 &1064777109
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1575,18 +1575,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
-  m_EdgeRadius: 0
+  m_Size: {x: 1.18, y: 0.61}
+  m_Direction: 1
 --- !u!1 &1073476816
 GameObject:
   m_ObjectHideFlags: 0
@@ -2307,6 +2297,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388183334}
   m_CullTransparentMesh: 1
+--- !u!1 &1455289489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1455289490}
+  - component: {fileID: 1455289491}
+  - component: {fileID: 1455289492}
+  m_Layer: 7
+  m_Name: FailTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1455289490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455289489}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
+  m_LocalScale: {x: 5, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1850114230}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1455289491
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455289489}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1455289492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455289489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b850f1b2f28ad4f99f4987b8ad56ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1460133649
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,6 +2468,7 @@ Transform:
   - {fileID: 1151801011}
   - {fileID: 169394277}
   - {fileID: 1912868798}
+  - {fileID: 1455289490}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3005,7 +3066,7 @@ GameObject:
   - component: {fileID: 2046191392}
   m_Layer: 6
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3039,6 +3100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BallRB: {fileID: 2046191393}
   m_BallVelocityMultiplier: 2
+  BallSpriteRenderer: {fileID: 643857239}
 --- !u!58 &2046191392
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3332,9 +3394,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7e7b5af2882af4daca23f2c6e9734e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FailCanvas: {fileID: 0}
+  m_FailCanvas: {fileID: 1063885093378647404}
   m_FailReward: 100
-  m_SuccessCanvas: {fileID: 0}
+  m_SuccessCanvas: {fileID: 1063885093598996150}
   m_SuccessReward: 300
   m_RewardTweenDuration: 3
   m_RewardTweenCurve:
@@ -4883,6 +4945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f44342f9d6b75294089d488c12869284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectPool: {fileID: 3458736503055401148}
   PlayerManager: {fileID: 3458736502107259218}
   JsonConverter: {fileID: 3458736502889366072}
   LevelManager: {fileID: 3458736503687249224}
@@ -5033,6 +5096,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3458736503055401147}
+  - component: {fileID: 3458736503055401148}
   m_Layer: 0
   m_Name: ObjectPool
   m_TagString: Untagged
@@ -5054,6 +5118,23 @@ Transform:
   m_Father: {fileID: 3458736503115833526}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3458736503055401148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3458736503055401146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af773b16f15819f4090c0fb0550c4611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - prefabTag: Brick
+    pooledPrefab: {fileID: 3884306805272492662, guid: 2e608df68b1634541977fd556910b683, type: 3}
+    size: 10
+    prefabParent: {fileID: 0}
 --- !u!1 &3458736503115833525
 GameObject:
   m_ObjectHideFlags: 0
@@ -5121,6 +5202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d001186bcf0d4bb4aac56c93a2268083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BrickedCount: 0
 --- !u!4 &3458736503687249240
 Transform:
   m_ObjectHideFlags: 0

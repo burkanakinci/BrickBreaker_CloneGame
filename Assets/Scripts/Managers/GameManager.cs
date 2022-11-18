@@ -7,6 +7,7 @@ public class GameManager : CustomBehaviour
 {
     public static GameManager Instance { get; private set; }
     #region Fields
+    public ObjectPool ObjectPool;
     public PlayerManager PlayerManager;
     public JsonConverter JsonConverter;
     public LevelManager LevelManager;
@@ -32,6 +33,7 @@ public class GameManager : CustomBehaviour
     }
     public override void Initialize()
     {
+        ObjectPool.Initialize();
         JsonConverter.Initialize();
         PlayerManager.Initialize();
         InputManager.Initialize();
