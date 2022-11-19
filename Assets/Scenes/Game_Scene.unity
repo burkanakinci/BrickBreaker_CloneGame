@@ -5135,6 +5135,10 @@ MonoBehaviour:
     pooledPrefab: {fileID: 3884306805272492662, guid: 2e608df68b1634541977fd556910b683, type: 3}
     size: 10
     prefabParent: {fileID: 0}
+  - prefabTag: ConfettiParticle
+    pooledPrefab: {fileID: 1672000600788508757, guid: acaaed538accbb3499338515e2fc3785, type: 3}
+    size: 10
+    prefabParent: {fileID: 0}
 --- !u!1 &3458736503115833525
 GameObject:
   m_ObjectHideFlags: 0

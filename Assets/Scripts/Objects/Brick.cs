@@ -25,6 +25,7 @@ public class Brick : CustomBehaviour, IPooledObject
     private void BreakBrick()
     {
         GameManager.Instance.LevelManager.BrickedCount++;
+        GameManager.Instance.ObjectPool.SpawnFromPool(PooledObjectTags.ConfettiParticle,transform.position,Quaternion.identity,null);
 
         if(GameManager.Instance.LevelManager.BrickedCount==GameManager.Instance.LevelManager.BrickCount)
         {

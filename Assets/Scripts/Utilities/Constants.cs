@@ -7,6 +7,7 @@ public class Constants
 public class PooledObjectTags
 {
     public const string Brick = "Brick";
+    public const string ConfettiParticle = "ConfettiParticle";
 }
 public class ObjectTags
 {

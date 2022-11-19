@@ -30,7 +30,22 @@ public class InputManager : CustomBehaviour
     {
         UpdateUIOverride();
         UpdateInput();
+#if UNITY_EDITOR
+        UpdateKeybordInput();
+#endif
     }
+#if UNITY_EDITOR
+    private void UpdateKeybordInput()
+    {
+        if ((Input.GetKey(KeyCode.A)) ||
+        (Input.GetKey(KeyCode.D)))
+        {
+            m_HorizontalMovementChange = Input.GetAxis("Horizontal") / m_ScreenWidth * 10.0f;
+
+            OnSwiped?.Invoke(m_HorizontalMovementChange);
+        }
+    }
+#endif
     public void UpdateInput()
     {
         if (Input.GetMouseButtonDown(0))
